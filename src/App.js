@@ -2,8 +2,15 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Form from './Form';
+import AddressBook from './AddressBook';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      contacts: JSON.parse(localStorage.getItem('app-contacts')) || []
+    };
+  }
   render() {
     return (
       <div>
@@ -19,6 +26,8 @@ class App extends Component {
         <div className="section">
           <div className="container">
             <Form />
+            <hr />
+            <AddressBook contacts={this.state.contacts} />
           </div>
         </div>
       </div>
